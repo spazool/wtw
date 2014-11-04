@@ -77,8 +77,8 @@
             </div>
             <div class="span8 social-media">
               <a href="https://twitter.com/share?url=http%3A%2F%2Fwww.wheresthewine.co.za%2Fevents%2Fview%2F<?php echo $event['Event']['id']; ?>&text=<?php echo $event['Event']['name']; ?>" target="_blank" ><i class="icon-twitter"></i></a>
-  <!--                                                <a href="#"><i class="icon-facebook"></i></a>
-              <a href="#"><i class="icon-linkedin"></i></a>-->
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.wheresthewine.co.za%2Fevents%2Fview%2F<?php echo $event['Event']['id']; ?>&text=<?php echo $event['Event']['name']; ?>" target="_blank"><i class="icon-facebook"></i></a>
+<!--              <a href="#"><i class="icon-linkedin"></i></a>-->
             </div>
           </div>
         </div>
