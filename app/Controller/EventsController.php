@@ -358,7 +358,8 @@ class EventsController extends AppController {
                 'Event.featured' => 1,
                 'Event.end_date >=' => date("Y-m-d H:i:s",strtotime('NOW'))
             ),
-            'order' => 'rand()',
+//            'order' => 'rand()',
+            'order' => 'Event.start_date',
             'limit' => 3,
             'group' => 'Event.id'
         );
