@@ -859,7 +859,8 @@ class EventsController extends AppController {
         
         $options = array(
             'order' => array(
-                'Event.start_date' => 'asc',
+                //'Event.start_date' => 'asc',
+                'Event.start_date' => 'desc',
                 'Event.name'
             ),
             'limit' => 15
