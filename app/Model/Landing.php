@@ -34,22 +34,22 @@ class Landing extends AppModel {
                 'message' => 'A valid email address must be supplied'
             )
         ),
-        'mobile' => array(
-            'notEmpty' => array(	
-                'rule' => 'notEmpty',	
-                'required' => true,
-                'message' => 'Tel is required'
-            ),
-            'numeric' => array(	
-                'rule' => 'numeric',	
-                'message' => 'Invalid Tel number'
-            ),
-            'between' => array(	
-                'rule' => array('between', 10, 12),	
-                'message' => 'Invalid Tel number'
-            ),
-            
-        ),
+//        'mobile' => array(
+//            'notEmpty' => array(	
+//                'rule' => 'notEmpty',	
+//                'required' => true,
+//                'message' => 'Tel is required'
+//            ),
+//            'numeric' => array(	
+//                'rule' => 'numeric',	
+//                'message' => 'Invalid Tel number'
+//            ),
+//            'between' => array(	
+//                'rule' => array('between', 10, 12),	
+//                'message' => 'Invalid Tel number'
+//            ),
+//            
+//        ),
         'message' => array(
             'notEmpty' => array(	
                 'rule' => 'notEmpty',	
