@@ -13,7 +13,7 @@ class Event extends AppModel {
               'message' => 'Event Name is required'
           ),
           'alphaNumeric' => array(
-              'rule' => array('custom', "/^[a-z0-9 '-]*$/i"),
+              'rule' => array('custom', "/^[a-z0-9 @$&',@-]*$/i"),
               'message' => 'Event Name is incorrectly formatted'
           ),
           'between' => array(
@@ -94,18 +94,17 @@ class Event extends AppModel {
           )
       ),
       'telephone' => array(
-          'notEmpty' => array(
-              'rule' => 'notEmpty',
-              'required' => true,
-              'message' => 'Phone number is required'
-          ),
           'numeric' => array(
               'rule' => 'numeric',
-              'message' => 'Please enter a valid phone number'
+              'message' => 'Please enter a valid phone number',
+              'allowEmpty' => true,
+              'required' => false
           ),
           'length' => array(
               'rule' => array('minLength', 10),
-              'message' => 'Phone number must be 10 digits'
+              'message' => 'Phone number must be 10 digits',
+              'allowEmpty' => true,
+              'required' => false
           )
       )
   );
