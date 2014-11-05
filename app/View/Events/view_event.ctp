@@ -43,8 +43,12 @@
       if (!empty($tickets)) {
         foreach ($tickets as $ticket) {
           echo '<div class="ticket">';
-          echo '<i class="icon-ticket"></i> ' . $ticket['Ticket']['ticket_name'] . '<br/>';
-          echo '<i class="icon-money"></i> ' . $ticket['Ticket']['price'] . ' ' . $this->Html->link('edit', array('controller' => 'tickets', 'action' => 'edit_event_ticket', $ticket['Ticket']['id'])) . ' | ' . $this->Html->link('delete', array('controller' => 'tickets', 'action' => 'delete_ticket', $ticket['Ticket']['id'], $event['Event']['id']));
+          if (!empty($ticket['Ticket']['ticket_name'])) {
+            echo '<i class="icon-ticket"></i> ' . $ticket['Ticket']['ticket_name'] . '<br/>';
+          }
+          if (!empty($ticket['Ticket']['price'])) {
+            echo '<i class="icon-money"></i> ' . $ticket['Ticket']['price'] . ' ' . $this->Html->link('edit', array('controller' => 'tickets', 'action' => 'edit_event_ticket', $ticket['Ticket']['id'])) . ' | ' . $this->Html->link('delete', array('controller' => 'tickets', 'action' => 'delete_ticket', $ticket['Ticket']['id'], $event['Event']['id']));
+          }
           echo '</div>';
         }
       }
@@ -55,16 +59,23 @@
 
       <?php
       if (!empty($organiser)) {
-        ?>
-        <i class="icon-building"></i> <?php echo $organiser['Organiser']['organiser_name']; ?><br />
-        <i class="icon-user"></i> <?php echo $organiser['Organiser']['contact_name']; ?><br />
-        <i class="icon-phone-sign"></i> <?php echo $organiser['Organiser']['telephone']; ?><br />
-        <i class="icon-envelope"></i> <a href="mailto:<?php echo $organiser['Organiser']['email']; ?>"><?php echo $organiser['Organiser']['email']; ?></a><br />
-        <i class="icon-external-link-sign"></i> <a href="<?php echo $organiser['Organiser']['website']; ?>" target="_blank"><?php echo $organiser['Organiser']['website']; ?></a><br />
-        <?php
+        if (!empty($organiser['Organiser']['organiser_name'])) {
+          echo '<i class="icon-building"></i> ' . $organiser['Organiser']['organiser_name'] . '<br />';
+        }
+        if (!empty($organiser['Organiser']['contact_name'])) {
+          echo '<i class="icon-user"></i> ' . $organiser['Organiser']['contact_name'] . '<br />';
+        }
+        if (!empty($organiser['Organiser']['telephone'])) {
+          echo '<i class="icon-phone-sign"></i> ' . $organiser['Organiser']['telephone'] . '<br />';
+        }
+        if (!empty($organiser['Organiser']['email'])) {
+          echo '<i class="icon-envelope"></i> <a href="mailto:' . $organiser['Organiser']['email'] . '">' . $organiser['Organiser']['email'] . '</a><br />';
+        }
+        if (!empty($organiser['Organiser']['website'])) {
+          echo '<i class="icon-external-link-sign"></i> <a href="' . $organiser['Organiser']['website'] . '" target="_blank">' . $organiser['Organiser']['website'] . '</a><br />';
+        }
       }
       ?>
-
 
     </div>
     <div class="venue">
@@ -81,20 +92,30 @@
             <?php else: ?>
               <div class="span12">
               <?php endif; ?>
-              <i class="icon-road"></i> <?php echo $venue['Venue']['name']; ?><br />
-              <i class="icon-info-sign"></i> <?php echo $venue['Venue']['description']; ?><br />
-              <i class="icon-phone-sign"></i> <?php echo $venue['Venue']['phone']; ?><br />
-              <i class="icon-envelope"></i> <a href="mailto:<?php echo $venue['Venue']['email']; ?>"><?php echo $venue['Venue']['email']; ?></a><br />
-              <i class="icon-map-marker"></i> <?php echo $venue['Venue']['address_line_one']; ?><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $venue['Venue']['address_line_two']; ?><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $this->Status->translateCountry($venue['Venue']['country_id']); ?><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $this->Status->translateProvince($venue['Venue']['province_id']); ?><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $this->Status->translateCity($venue['Venue']['city_id']); ?><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $venue['Venue']['latitude']; ?>&nbsp;&nbsp;<?php echo $venue['Venue']['longitude']; ?><br />
-              <i class="icon-external-link-sign"></i> <a href="<?php echo $venue['Venue']['website']; ?>" target="_blank"><?php echo $venue['Venue']['website']; ?></a><br />
+              <?php if (!empty($venue['Venue']['name'])) { ?>
+                <i class="icon-road"></i> <?php echo $venue['Venue']['name']; ?><br />
+              <?php } ?>
+              <?php if (!empty($venue['Venue']['description'])) { ?>
+                <i class="icon-info-sign"></i> <?php echo $venue['Venue']['description']; ?><br />
+              <?php } ?>
+              <?php if (!empty($venue['Venue']['phone'])) { ?>
+                <i class="icon-phone-sign"></i> <?php echo $venue['Venue']['phone']; ?><br />
+              <?php } ?>
+              <?php if (!empty($venue['Venue']['email'])) { ?>
+                <i class="icon-envelope"></i> <a href="mailto:<?php echo $venue['Venue']['email']; ?>"><?php echo $venue['Venue']['email']; ?></a><br />
+              <?php } ?>
+              <?php if (!empty($venue['Venue']['address_line_one'])) { ?>
+                <i class="icon-map-marker"></i> <?php echo $venue['Venue']['address_line_one']; ?><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $venue['Venue']['address_line_two']; ?><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $this->Status->translateCountry($venue['Venue']['country_id']); ?><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $this->Status->translateProvince($venue['Venue']['province_id']); ?><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $this->Status->translateCity($venue['Venue']['city_id']); ?><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $venue['Venue']['latitude']; ?>&nbsp;&nbsp;<?php echo $venue['Venue']['longitude']; ?><br />
+              <?php } ?>
+              <?php if (!empty($venue['Venue']['website'])) { ?>
+                <i class="icon-external-link-sign"></i> <a href="<?php echo $venue['Venue']['website']; ?>" target="_blank"><?php echo $venue['Venue']['website']; ?></a><br />
+              <?php } ?>
               <!--MAPS-->
-
-
 
             </div>
             <div class="span12">
@@ -107,7 +128,7 @@
         ?>
         <div class="row-fluid">
           <div class="span12">
-<?php echo $this->Html->link('Cancel', array('controller' => 'events', 'action' => 'my_events'), array('class' => 'btn')); ?>
+            <?php echo $this->Html->link('Cancel', array('controller' => 'events', 'action' => 'my_events'), array('class' => 'btn')); ?>
           </div>
 
         </div>
