@@ -14,6 +14,8 @@ if(!isset($meta_description)){
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="<?php echo $meta_description; ?>" name="description" />
     <meta content="wine, tasting, events, wine events, festival, course" name="keywords" />
+    <meta property="og:image" content="http://wheresthewine.co.za/img/FB_SHARER.JPG" />
+    <meta property="og:title" content="Wheres the Wine | Wine Listings" />
 
     <?php
         echo $this->Html->meta(
