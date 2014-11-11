@@ -310,7 +310,7 @@ class EventsController extends AppController {
             'group' => 'Event.id',
             'limit' => 5
         );
-        $this->Paginator->settings = $options;
+        $this->Paginator->settings = $options; 
         $events = $this->Paginator->paginate('Event');
 //        $events = $this->Event->find('all',$paginate);
         
